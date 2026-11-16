@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>SpendWise Dashboard</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,179 +14,182 @@
 
         <!-- Sidebar -->
         <aside class="sidebar">
-
             <h2>SpendWise</h2>
 
             <nav>
-                <a href="#">Dashboard</a>
-                <a href="#">Transactions</a>
-                <a href="#">Budget</a>
-                <a href="#">Reports</a>
-                <a href="#">Settings</a>
+                <a href="#dashboard">Dashboard</a>
+                <a href="#transactions">Transactions</a>
+                <a href="#budget">Budget</a>
             </nav>
-
         </aside>
-
 
         <!-- Main Content -->
         <main class="main-content">
 
             <!-- Header -->
             <header class="header">
-
                 <div>
                     <h1>Dashboard</h1>
                     <p>Welcome back! Here's your spending overview.</p>
                 </div>
 
                 <div class="profile">
-
                     <div class="avatar">CH</div>
-
                     <div>
                         <strong>Camar Hussein</strong>
                         <p>Personal Account</p>
                     </div>
+                </div>
+            </header>
+
+            <!-- Dashboard -->
+            <section id="dashboard">
+
+                <h2>Financial Overview</h2>
+
+                <div class="summary-grid">
+
+                    <div class="summary-card">
+                        <p>Monthly Budget</p>
+                        <h2 id="budgetAmount">$3,000.00</h2>
+                    </div>
+
+                    <div class="summary-card">
+                        <p>Total Expenses</p>
+                        <h2 id="totalExpenses">$0.00</h2>
+                    </div>
+
+                    <div class="summary-card">
+                        <p>Remaining Balance</p>
+                        <h2 id="remainingBalance">$3,000.00</h2>
+                    </div>
 
                 </div>
 
-            </header>
+                <!-- Budget Status -->
+                <div id="budgetStatus" class="budget-status">
+                    Your budget is healthy.
+                </div>
 
+            </section>
 
-            <!-- Dashboard Content -->
-            <section class="dashboard-content">
+            <!-- Add Expense Form -->
+            <section class="form-section">
+
+                <h2>Add New Expense</h2>
+
+                <form id="expenseForm">
+
+                    <div class="form-group">
+                        <label for="expenseName">Expense Name</label>
+                        <input
+                            type="text"
+                            id="expenseName"
+                            placeholder="e.g. Lunch"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expenseAmount">Amount ($)</label>
+                        <input
+                            type="number"
+                            id="expenseAmount"
+                            placeholder="Enter amount"
+                            min="0.01"
+                            step="0.01"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expenseCategory">Category</label>
+
+                        <select id="expenseCategory" required>
+                            <option value="">Select category</option>
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Savings">Savings</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Shopping">Shopping</option>
+                        </select>
+                    </div>
+
+                    <button type="submit">Add Expense</button>
+
+                </form>
+
+            </section>
+
+            <!-- Budget -->
+            <section id="budget" class="budget-section">
+
+                <h2>Manage Your Budget</h2>
+
+                <form id="budgetForm">
+                    <div class="form-group">
+                        <label for="newBudget">Set Monthly Budget ($)</label>
+
+                        <input
+                            type="number"
+                            id="newBudget"
+                            min="0.01"
+                            step="0.01"
+                            placeholder="Enter new budget"
+                            required
+                        >
+                    </div>
+
+                    <button type="submit">Update Budget</button>
+                </form>
+
+                <div class="progress-container">
+                    <div id="budgetProgress" class="progress-bar"></div>
+                </div>
+
+                <p id="progressText">0% of budget used</p>
+
+            </section>
+
+            <!-- Categories -->
+            <section class="categories-section">
 
                 <h2>Spending Categories</h2>
 
-                <!-- Category Cards -->
-                <div class="category-grid">
+                <div id="categoryGrid" class="category-grid">
+                    <!-- JavaScript displays categories here -->
+                </div>
 
-                    <!-- Food -->
-                    <article class="category-card" tabindex="0">
+            </section>
 
-                        <div class="card-top">
-                            <span class="icon">🍔</span>
-                            <span>28%</span>
-                        </div>
+            <!-- Transactions -->
+            <section id="transactions" class="transactions-section">
 
-                        <div>
-                            <h3>Food</h3>
-                            <p>Groceries & dining</p>
-                        </div>
+                <h2>Recent Transactions</h2>
 
-                        <div class="card-bottom">
-                            <strong>$610.00</strong>
-                            <span>of $800</span>
-                        </div>
+                <div class="table-container">
 
-                    </article>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Expense</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
 
+                        <tbody id="expenseList">
+                            <!-- JavaScript displays expenses here -->
+                        </tbody>
 
-                    <!-- Transport -->
-                    <article class="category-card" tabindex="0">
-
-                        <div class="card-top">
-                            <span class="icon">🚗</span>
-                            <span>15%</span>
-                        </div>
-
-                        <div>
-                            <h3>Transport</h3>
-                            <p>Fuel & public transit</p>
-                        </div>
-
-                        <div class="card-bottom">
-                            <strong>$330.00</strong>
-                            <span>of $500</span>
-                        </div>
-
-                    </article>
-
-
-                    <!-- Rent -->
-                    <article class="category-card" tabindex="0">
-
-                        <div class="card-top">
-                            <span class="icon">🏠</span>
-                            <span>35%</span>
-                        </div>
-
-                        <div>
-                            <h3>Rent</h3>
-                            <p>Monthly housing</p>
-                        </div>
-
-                        <div class="card-bottom">
-                            <strong>$750.00</strong>
-                            <span>of $900</span>
-                        </div>
-
-                    </article>
-
-
-                    <!-- Entertainment -->
-                    <article class="category-card" tabindex="0">
-
-                        <div class="card-top">
-                            <span class="icon">🎬</span>
-                            <span>8%</span>
-                        </div>
-
-                        <div>
-                            <h3>Entertainment</h3>
-                            <p>Movies & activities</p>
-                        </div>
-
-                        <div class="card-bottom">
-                            <strong>$175.00</strong>
-                            <span>of $300</span>
-                        </div>
-
-                    </article>
-
-
-                    <!-- Savings -->
-                    <article class="category-card" tabindex="0">
-
-                        <div class="card-top">
-                            <span class="icon">💰</span>
-                            <span>10%</span>
-                        </div>
-
-                        <div>
-                            <h3>Savings</h3>
-                            <p>Emergency fund</p>
-                        </div>
-
-                        <div class="card-bottom">
-                            <strong>$1,320.00</strong>
-                            <span>of $1,500</span>
-                        </div>
-
-                    </article>
-
-
-                    <!-- Utilities -->
-                    <article class="category-card" tabindex="0">
-
-                        <div class="card-top">
-                            <span class="icon">💡</span>
-                            <span>12%</span>
-                        </div>
-
-                        <div>
-                            <h3>Utilities</h3>
-                            <p>Electricity & internet</p>
-                        </div>
-
-                        <div class="card-bottom">
-                            <strong>$260.00</strong>
-                            <span>of $350</span>
-                        </div>
-
-                    </article>
+                    </table>
 
                 </div>
+
+                <p id="emptyMessage">No expenses recorded yet.</p>
 
             </section>
 
@@ -196,6 +197,7 @@
 
     </div>
 
+    <script src="script.js"></script>
+
 </body>
 </html>
-
